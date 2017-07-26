@@ -7,7 +7,7 @@ Demo app for basic Use of OAuth 1 using Twitter API
 List of basic routes:
 
 | Route       | HTTP | Description                             |
-| ----------- |:----:| ---------------------------------------:|
+| ----------- |:----:| :---------------------------------------|
 | /           | GET  | Welcome To OAuth 1 using Twitter API!   |
 
 List of routes:
