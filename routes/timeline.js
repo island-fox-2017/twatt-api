@@ -17,5 +17,9 @@ let oauth = new OAuth.OAuth(
 
 router.get('/', controllers.show)
 
+router.post('/', controllers.posting)
+
+router.get('/search', controllers.search)
+
 
 module.exports = router;
