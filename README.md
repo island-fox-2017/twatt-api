@@ -21,5 +21,5 @@ List of routes:
 
 
 ### Don't Forget
-After you clone this repo, create a .env file and fill it like already made .env.template file.
-you can get all the necessary key in https://apps.twitter.com
+After you clone this repo, create a .env file and fill it like the already made .env.template file. 
+you can get all the necessary keys in https://apps.twitter.com
