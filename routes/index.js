@@ -18,18 +18,13 @@ const oauth = new OAuth.OAuth(
   'HMAC-SHA1'
 );
 
-router.get('/api', idxCtrl.timeline)
 
+router.get('/api/', idxCtrl.defaultTimeline)
+router.get('/api/search?:q', idxCtrl.search)
+router.get('/api/trending', idxCtrl.trending)
+router.get('/api/user?:q', idxCtrl.otherUserTimeline)
 
-// router.get('/api', (req, res) => {
-//   oauth.get(
-//     'https://api.twitter.com/1.1/trends/place.json?id=23424977',
-//     '890049944337301504-gFp6GclgFuxHJAIQ34eGOWSUxvVhsFq', //test user token
-//     '6oHMeXg7h1N2dIiRSuqOkrNhV4OoYZubenqOPZFcMCY83', //test user secret
-//     function (e, data, r){
-//       if (!e) res.send(data);
-//       else res.status(500).send(e)
-//   });
-// })
+router.post('/api/twat', idxCtrl.post)
+
 
 module.exports = router;
