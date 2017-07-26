@@ -16,13 +16,16 @@ var newOauth = new oauth.OAuth(`https://api.twitter.com/oauth/request_token`,
       `HMAC-SHA1`
     );
     
-    let token = `87119074-RiNBSdjmIjEHLPoOZaesVJ5u6Bf9315hLI0Bl9DDQ`;
-    let secret = `B1Kez4GA3cN1p5kS60wLmPKrt4hPPB1rkYzBqWdrsSrt1`;
+    var token = `87119074-RiNBSdjmIjEHLPoOZaesVJ5u6Bf9315hLI0Bl9DDQ`;
+    var secret = `B1Kez4GA3cN1p5kS60wLmPKrt4hPPB1rkYzBqWdrsSrt1`;
   
-  router.get('/timeline', (req, res) => {
-    newOauth.get(`https://api.twitter.com/1.1/statuses/home_timeline.json`,
+  router.post('/post', (req, res) => {
+    let status = req.query.status
+    newOauth.post(`https://api.twitter.com/1.1/statuses/update.json?status=${status}`,
         token, //test user token 
         secret, //test user secret
+        status,
+        'txt',
       (err, data) => {
         if(!err){
           var parseData = JSON.parse(data)
@@ -34,6 +37,6 @@ var newOauth = new oauth.OAuth(`https://api.twitter.com/oauth/request_token`,
       })
   })
   
-  
+
 
 module.exports = router;

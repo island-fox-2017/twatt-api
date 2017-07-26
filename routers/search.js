@@ -20,8 +20,8 @@ var newOauth = new oauth.OAuth(`https://api.twitter.com/oauth/request_token`,
     let secret = `B1Kez4GA3cN1p5kS60wLmPKrt4hPPB1rkYzBqWdrsSrt1`;
   
   router.get('/search', (req, res) => {
-    let params = req.params.q
-    newOauth.get(`https://api.twitter.com/1.1/search/tweets.json?q=${params}`,
+    let query = req.query.q
+    newOauth.get(`https://api.twitter.com/1.1/search/tweets.json?q=${query}`,
         token, //test user token 
         secret, //test user secret
       (err, data) => {
