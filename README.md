@@ -18,3 +18,8 @@ List of routes:
 | /timeline   | GET  | Get your timeline                                                                  |
 | /search     | POST | Search for specific tweets                                                         |
 | /tweet      | POST | Post a tweet as your profile                                                       |
+
+
+### Don't Forget
+After you clone this repo, create a .env file and fill it like already made .env.template file.
+you can get all the necessary key in https://apps.twitter.com
