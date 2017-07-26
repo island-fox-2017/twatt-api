@@ -16,16 +16,17 @@ var myOauth = new OAuth.OAuth(
       'HMAC-SHA1'
     );
 
-router.get('/', (req, res, done) => {
+router.post('/', (req, res) => {
+  let keyword = req.body.keyword;
   myOauth.get(
-    'https://api.twitter.com/1.1/trends/place.json?id=23424977',
-    process.env.ACCESS_TOKEN, // user token
-    process.env.ACCESS_TOKEN_SECRET, // user secret
+    `https://api.twitter.com/1.1/search/tweets.json?q=${keyword}`,
+    process.env.ACCESS_TOKEN,
+    process.env.ACCESS_TOKEN_SECRET,
     function (e, data, res2){
       if (e) console.error(e);
       console.log(require('util').inspect(data));
       res.send(data);
     });
-});
+})
 
 module.exports = router;

@@ -3,12 +3,14 @@
 const express = require('express');
 const router = express.Router();
 const OAuth = require('oauth');
+require('dotenv').config()
+
 
 var myOauth = new OAuth.OAuth(
       'https://api.twitter.com/oauth/request_token',
       'https://api.twitter.com/oauth/access_token',
-      '8jtEGqO0rGAnjHuHvWHxLq4kO',
-      'wzQPdtZZ7L1wh9haELP3pLfvIcGga8Pxh7sDGJ6B4F4De0HadT',
+      process.env.CONSUMER_KEY,
+      process.env.CONSUMER_SECRET,
       '1.0A',
       null,
       'HMAC-SHA1'
@@ -17,12 +19,12 @@ var myOauth = new OAuth.OAuth(
 router.get('/', (req, res, done) => {
   myOauth.get(
     'https://api.twitter.com/1.1/statuses/home_timeline.json',
-    '82060866-srtvJaMl8CQXVgBzuU4VUzvw7rEVDVXrr4Z1FMtj0', //test user token
-    'Cw8D8K2ddfFscHyByWbFibO6pQCsqMWkOJTvnCK34gJa6', //test user secret
+    process.env.ACCESS_TOKEN,
+    process.env.ACCESS_TOKEN_SECRET,
     function (e, data, res2){
       if (e) console.error(e);
       console.log(require('util').inspect(data));
-      res.json(data);
+      res.send(data);
     });
 });
 
